@@ -68,6 +68,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card  text-white mb-4" style="background-color:grey;">
+                            <div class="card-body"><span style="font-size:20px;font-weight:bold;"><i class="fa fa-laptop"></i> News</span></div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <!--<a class="small text-white stretched-link" href="#">View Details</a>-->
+                                <a href="news.php"><button class="btn btn-info">open</button></a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 

@@ -102,6 +102,10 @@
                         </div>
                         <div class="form-control">
                             <label class="header">Position </label>
+                            <input type="text" id="name" name="name" placeholder="" title="Please enter your Full Name" required="">
+                        </div>
+                        <div class="form-control">
+                            <label class="header">Player Number </label>
                             <select class="form-control">
                                 <?php
                                 $x = 1;

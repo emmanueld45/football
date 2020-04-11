@@ -40,8 +40,11 @@
                     <a class="nav-link" href="gallery.php">
                         <div class="sb-nav-link-icon"><i class="fa fa-edit"></i></div>
                         Gallery
+                    </a><a class="nav-link" href="news.php">
+                        <div class="sb-nav-link-icon"><i class="fa fa-laptop"></i></div>
+                        News
                     </a>
-                    </a>
+
                     <a class="nav-link" href="technical-crew.php">
                         <div class="sb-nav-link-icon"><i class="fa fa-users"></i></div>
                         Technical Crew

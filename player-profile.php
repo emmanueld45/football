@@ -18,7 +18,7 @@
             .banner-container {
                 width: 100%;
                 height: auto;
-                background-color: orange;
+                background-color: moccasin;
 
             }
 
@@ -161,7 +161,17 @@
                 height: auto;
                 margin-bottom: 40px;
                 position: relative;
-                top: -30px;
+                top: -20px;
+            }
+
+            .player-number {
+                position: absolute;
+                left: -5%;
+                bottom: 60px;
+                font-weight: bold;
+                font-size: 25px;
+                border: none;
+                background-color: rgba(0, 0, 0, 0);
             }
 
             .read-more-btn {
@@ -252,9 +262,11 @@
                     </p>
                     <p>Goal keeper</p>
                 </div>
+
             </div>
 
             <div class="col-sm-4"></div>
+            <button class="player-number">No.1</button>
         </div>
 
     </div>
@@ -262,82 +274,145 @@
     <!-- //banner -->
 
     <!-- selection start -->
-    <div class="row" style="margin-top:10px;margin-bottom:10px;border-bottom:2px solid lightgrey">
-        <div class="col-xs-6 col-sm-6" style="padding:10px;text-align:right;border-right:1px solid grey"><span id="bio-btn">BIO </span></div>
-        <div class="col-xs-6 col-sm-6" style="padding:10px;text-align:left;"><span id="info-btn">INFO</span></div>
+    <div class="row" style="margin-top:10px;margin-bottom:10px;box-shadow:0px 3px 7px grey;">
+        <div class="col-xs-6 col-sm-6" style="padding:10px;text-align:right;border-right:1px solid grey"><span class="profile-btn" style="color:orange;font-weight:600;">Profile </span></div>
+        <div class="col-xs-6 col-sm-6" style="padding:10px;text-align:left;"><span class="social-btn">Social</span></div>
     </div>
     <!-- selection end -->
 
 
-    <!-- details section start -->
-    <div class="container">
-        <div class="row">
+    <!-- profile details section start -->
+    <div class="profile-details-container" style="display:;">
 
-            <div id="bio" class="col-sm-6" style="padding:30px !important;border-right:1px solid lightgrey;">
-                <h4 style="color:orange;">Bio</h4>
-                <p>this is a dummy title for this thing i am creating.. it is very handy when you just want to fill up some text</p>
-                <br>
-                <p>this is a dummy title for this thing i am creating.. it is very handy when you just want to fill up some text</p>
-                <br>
-                <p>this is a dummy title for this thing i am creating.. it is very handy when you just want to fill up some text</p>
-                <br><br>
-                <button class="read-more-btn">Read more</button>
+        <div class="container">
+            <div class="row">
+
+                <div id="bio" class="col-sm-6" style="padding:30px !important;border-right:1px solid lightgrey;">
+                    <h4 style="color:orange;">Bio</h4><br>
+                    <p>this is a dummy title for this thing i am creating.. it is very handy when you just want to fill up some text</p>
+                    <br>
+                    <p>this is a dummy title for this thing i am creating.. it is very handy when you just want to fill up some text</p>
+                    <br>
+                    <p>this is a dummy title for this thing i am creating.. it is very handy when you just want to fill up some text</p>
+                    <br><br>
+                    <button class="read-more-btn">Read more</button>
+                </div>
+
+                <div id="info" class="col-sm-6" style="padding:30px !important;">
+
+                    <h4 style="color:orange;">Info</h4>
+
+                    <!-- info 1-->
+                    <div class="info-box">
+                        <p class="info-small-text">Date of birth</p>
+                        <p class="info-large-text">
+                            <h3>24<sup>th</sup> May 1990</h3>
+                        </p>
+                    </div>
+
+                    <!-- info 2-->
+                    <div class="info-box">
+                        <p class="info-small-text">Location</p>
+                        <p class="info-large-text">
+                            <h3>River State</h3>
+                        </p>
+                    </div>
+
+                    <!-- info 3-->
+                    <div class="info-box">
+                        <p class="info-small-text">Position</p>
+                        <p class="info-large-text">
+                            <h3>Goal Keeper</h3>
+                        </p>
+                    </div>
+
+                    <!-- info 4-->
+                    <div class="info-box">
+                        <p class="info-small-text">Status</p>
+                        <p class="info-large-text">
+                            <h3>ACTIVE</h3>
+                        </p>
+                    </div>
+
+
+                    <!-- info 5-->
+                    <div class="info-box">
+                        <p class="info-small-text">Join date</p>
+                        <p class="info-large-text">
+                            <h3>20<sup>th</sup> April 2019</h3>
+                        </p>
+                    </div>
+
+
+
+
+                </div>
+
+
+
             </div>
-
-            <div id="info" class="col-sm-6" style="padding:30px !important;">
-
-                <h4 style="color:orange;">Info</h4>
-
-                <!-- info 1-->
-                <div class="info-box">
-                    <p class="info-small-text">Date of birth</p>
-                    <p class="info-large-text">
-                        <h3>24<sup>th</sup> May 1990</h3>
-                    </p>
-                </div>
-
-                <!-- info 2-->
-                <div class="info-box">
-                    <p class="info-small-text">Location</p>
-                    <p class="info-large-text">
-                        <h3>River State</h3>
-                    </p>
-                </div>
-
-                <!-- info 3-->
-                <div class="info-box">
-                    <p class="info-small-text">Position</p>
-                    <p class="info-large-text">
-                        <h3>Goal Keeper</h3>
-                    </p>
-                </div>
-
-                <!-- info 4-->
-                <div class="info-box">
-                    <p class="info-small-text">Status</p>
-                    <p class="info-large-text">
-                        <h3>ACTIVE</h3>
-                    </p>
-                </div>
-
-
-                <!-- info 5-->
-                <div class="info-box">
-                    <p class="info-small-text">Join date</p>
-                    <p class="info-large-text">
-                        <h3>20<sup>th</sup> April 2019</h3>
-                    </p>
-                </div>
-
-
-
-
-            </div>
-
-
-
         </div>
+
     </div>
-    <!-- details section end -->
+    <!--profile details section end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- social details section start -->
+    <div class="social-details-container" style="display:none;">
+
+        <div class="container">
+            <div class="row">
+
+                <div id="bio" class="col-sm-6" style="padding:30px !important;border-right:1px solid lightgrey;">
+                    <h4 style="color:orange;">Social</h4><br>
+                    <p><i class="fa fa-twitter"></i> @emmycodes</p>
+                    <br>
+                    <p><i class="fa fa-instagram"></i> @emmycodes</p>
+                </div>
+
+                <div id="info" class="col-sm-6" style="padding:30px !important;">
+
+
+
+                    <!-- embed start -->
+                    <a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <!-- embed end -->
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+    <!--social details section end -->
 
     <?php include 'footer.php'; ?>

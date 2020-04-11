@@ -128,6 +128,8 @@
         });
 
 
+
+        /* 
         // scroll to bio
         $('#bio-btn').click(function() {
             $('html,body').animate({
@@ -142,6 +144,50 @@
         $('html,body').animate({
             scrollTop: $("#info").offset().top
         }, 800);
+    });
+
+    */
+
+
+        // profile btn start 
+        $(".profile-btn").click(function() {
+            $(".profile-btn").css("color", "orange");
+            $(".profile-btn").css("font-weight", "600");
+
+            $(".social-btn").css("color", "grey");
+            $(".social-btn").css("font-weight", "normal");
+
+            // container
+            $(".profile-details-container").fadeIn();
+            $(".social-details-container").fadeOut();
+            // alert("profile")
+        });
+        // profile btn end
+
+
+
+        // social btn start
+        $(".social-btn").click(function() {
+            //css
+            $(".social-btn").css("color", "orange");
+            $(".social-btn").css("font-weight", "600");
+
+            $(".profile-btn").css("color", "grey");
+            $(".profile-btn").css("font-weight", "normal");
+
+            // container
+            $(".social-details-container").fadeIn();
+            $(".profile-details-container").fadeOut();
+            // alert("social")
+        });
+        // social btn end
+
+
+
+
+
+
+
     });
 </script>
 </body>
