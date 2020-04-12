@@ -49,7 +49,7 @@
 
 
 
-                <form action="add-gallery-photo-check.php" method="POST" enctype="multipart/form-data">
+                <form action="add-crew-member-check.php" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="card mb-4">
@@ -61,21 +61,21 @@
                                         <label class="header">
                                             <h5>First Name </h5>
                                         </label>
-                                        <input type="text" id="name" name="name" class="form-control" placeholder="type here...">
+                                        <input type="text" id="name" name="firstname" class="form-control" placeholder="">
                                     </div><br>
 
                                     <div class="">
                                         <label class="header">
                                             <h5>Last Name</h5>
                                         </label>
-                                        <input type="text" id="name" name="name" class="form-control" placeholder="type here...">
+                                        <input type="text" id="name" name="lastname" class="form-control" placeholder="">
                                     </div><br>
 
                                     <div class="">
                                         <label class="header">
                                             <h5>Phone Number </h5>
                                         </label>
-                                        <input type="text" id="name" name="name" class="form-control" placeholder="type here...">
+                                        <input type="text" id="name" name="phone" class="form-control" placeholder="">
                                     </div><br>
 
                                 </div>
@@ -97,7 +97,7 @@
 
                                     <div class="">
                                         <label class="header">Select photo </label>
-                                        <input type="file" id="name" name="name" class="form-control">
+                                        <input type="file" id="name" name="image" class="form-control">
                                     </div>
 
 
@@ -109,13 +109,21 @@
                     </div>
 
 
-                    <input type="submit" class="btn btn-primary" value="Register Member">
+                    <input type="submit" class="btn btn-primary" name="submit" value="Register Member">
 
                 </form>
             </div>
 
 
+            <?php
+            if (isset($_GET['memberadded'])) {
+                echo "<div class='alert alert-success' style='position:fixed;top:10px;right:10px;z-index:5000;padding:10px;background-color:mediumseagreen;color:white;border-radius:4px;'>
+    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+    Member was successfully added!
+    </div>";
+            }
 
+            ?>
 
         </main>
 

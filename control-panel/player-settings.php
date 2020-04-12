@@ -1,3 +1,31 @@
+<?php
+include '../dbconn.php';
+
+
+$playerid = $_GET['playerid'];
+$sql = "SELECT * FROM players WHERE id='$playerid';";
+$result = mysqli_query($conn, $sql);
+$numrows = mysqli_num_rows($result);
+$row = mysqli_fetch_assoc($result);
+
+
+$firstname = $row['firstname'];
+$lastname = $row['lastname'];
+$image = $row['image'];
+$position = $row['position'];
+$birth = $row['birth'];
+$email = $row['email'];
+$phone = $row['phone'];
+$joiningdate = $row['joiningdate'];
+$address = $row['address'];
+$origin = $row['origin'];
+$position = $row['position'];
+$injurystatus = $row['injurystatus'];
+$contractduration = $row['birth'];
+$gender = $row['gender'];
+$bio = $row['bio'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,10 +118,10 @@
 
 
                 <div style="width:100%;display:flex;justify-content:center;">
-                    <img src="assets/img/t3.jpg" class="player-img">
+                    <img src="../<?php echo $image; ?>" class="player-img">
                 </div>
 
-                <div class="player-name">John Doe</div>
+                <div class="player-name"><?php echo $firstname . " " . $lastname; ?></div>
 
 
 
@@ -101,77 +129,80 @@
 
                 <div class="row">
                     <!-- Personal Details start -->
+
                     <div class="col-xl-6">
                         <div class="card mb-4">
                             <div class="card-header"><span style="font-weight:bold"><i class="fas fa-user mr-1"></i>Personal Details</span></div>
                             <div class="card-body">
-
-                                <!-- first name-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>First Name</h6>
-                                    </label>
-                                    <input type="text" class="form-control" name="name">
-                                </div><br>
-
-
-                                <!-- last name-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>Last Name</h6>
-                                    </label>
-                                    <input type="text" class="form-control" name="name">
-                                </div>
-
-                                <!-- email-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>Email Address</h6>
-                                    </label>
-                                    <input type="text" class="form-control" name="name">
-                                </div><br>
-
-                                <!-- phone-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>Phone</h6>
-                                    </label>
-                                    <input type="text" class="form-control" name="name">
-                                </div><br>
-
-                                <!-- Date of birth-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>Date of Birth</h6>
-                                    </label>
-                                    <input type="text" class="form-control" name="name">
-                                </div><br>
-
-                                <!-- address-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>Address</h6>
-                                    </label>
-                                    <input type="text" class="form-control" name="name">
-                                </div><br>
-
-                                <!-- Origin-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>Origin</h6>
-                                    </label>
-                                    <input type="text" class="form-control" name="name">
-                                </div><br>
-
-                                <button class="btn btn-primary">Save Changes</button>
+                                <form action="player-settings-check.php" method="POST">
+                                    <!-- first name-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>First Name</h6>
+                                        </label>
+                                        <input type="text" class="form-control" name="firstname" value="<?php echo $firstname; ?>">
+                                    </div><br>
 
 
+                                    <!-- last name-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>Last Name</h6>
+                                        </label>
+                                        <input type="text" class="form-control" name="lastname" value="<?php echo $lastname; ?>">
+                                    </div>
+
+                                    <!-- email-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>Email Address</h6>
+                                        </label>
+                                        <input type="text" class="form-control" name="email" value="<?php echo $email; ?>">
+                                    </div><br>
+
+                                    <!-- phone-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>Phone</h6>
+                                        </label>
+                                        <input type="text" class="form-control" name="phone" value="<?php echo $phone; ?>">
+                                    </div><br>
+
+                                    <!-- Date of birth-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>Date of Birth</h6>
+                                        </label>
+                                        <input type="text" class="form-control" name="birth" value="<?php echo $birth; ?>">
+                                    </div><br>
+
+                                    <!-- address-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>Address</h6>
+                                        </label>
+                                        <input type="text" class="form-control" name="address" value="<?php echo $address; ?>">
+                                    </div><br>
+
+                                    <!-- Origin-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>Origin</h6>
+                                        </label>
+                                        <input type="text" class="form-control" name="origin" value="<?php echo $origin; ?>">
+                                    </div><br>
+                                    <input type="text" class="form-control" name="playerid" style="display:none;" value="<?php echo $playerid; ?>">
+
+                                    <input type="submit" class="btn btn-primary" name="personnaldetails" value="Save changes">
 
 
 
+
+                                </form>
                             </div>
                         </div>
                     </div>
+
                     <!-- personal details end -->
 
 
@@ -181,52 +212,53 @@
                         <div class="card mb-4">
                             <div class="card-header"><span style="font-weight:bold"><i class="fas fa-flag mr-1"></i>Match Details</span></div>
                             <div class="card-body">
+                                <form action="player-settings-check.php" method="POST">
+                                    <!-- position-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>Position</h6>
+                                        </label>
+                                        <input type="text" class="form-control" name="position" value="<?php echo $position; ?>">
+                                    </div><br>
 
-                                <!-- position-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>Position</h6>
-                                    </label>
-                                    <input type="text" class="form-control" name="name">
-                                </div><br>
+                                    <!-- Joining date-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>Joining Date</h6>
+                                        </label>
+                                        <input type="text" class="form-control" name="joiningdate" value="<?php echo $joiningdate; ?>">
+                                    </div><br>
 
-                                <!-- Joining date-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>Joining Date</h6>
-                                    </label>
-                                    <input type="text" class="form-control" name="name">
-                                </div><br>
+                                    <!-- Contract Duration-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>Contract Duration</h6>
+                                        </label>
+                                        <input type="text" class="form-control" name="contractduration" value="<?php echo $contractduration; ?>">
+                                    </div><br>
 
-                                <!-- Contract Duration-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>Contract Duration</h6>
-                                    </label>
-                                    <input type="text" class="form-control" name="name">
-                                </div><br>
-
-                                <!-- injury status-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>Injury Status</h6>
-                                    </label>
-                                    <input type="text" class="form-control" name="name">
-                                </div><br>
-
-
-                                <!-- Biography-->
-                                <div class="">
-                                    <label class="header">
-                                        <h6>Biography</h6>
-                                    </label>
-                                    <textarea class="form-control" name="name"></textarea>
-                                </div><br>
-
-                                <button class="btn btn-primary">Save Changes</button>
+                                    <!-- injury status-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>Injury Status</h6>
+                                        </label>
+                                        <input type="text" class="form-control" name="injurystatus" value="<?php echo $injurystatus; ?>">
+                                    </div><br>
 
 
+                                    <!-- Biography-->
+                                    <div class="">
+                                        <label class="header">
+                                            <h6>Biography</h6>
+                                        </label>
+                                        <textarea class="form-control" name="bio"><?php echo $bio; ?></textarea>
+                                    </div><br>
+                                    <input type="text" class="form-control" name="playerid" style="display:none;" value="<?php echo $playerid; ?>">
 
+                                    <input type="submit" name="matchdetails" class="btn btn-primary" value="Save changes">
+
+
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -239,7 +271,25 @@
             </div>
 
 
+            <?php
+            if (isset($_GET['personnaldetailsupdated'])) {
+                echo "<div class='alert alert-success' style='position:fixed;top:10px;right:10px;z-index:5000;padding:10px;background-color:mediumseagreen;color:white;border-radius:4px;'>
+    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+   Personnal details successfully updated!
+    </div>";
+            }
 
+            ?>
+
+            <?php
+            if (isset($_GET['matchdetailsupdated'])) {
+                echo "<div class='alert alert-success' style='position:fixed;top:10px;right:10px;z-index:5000;padding:10px;background-color:mediumseagreen;color:white;border-radius:4px;'>
+    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+   Match details successfully updated!
+    </div>";
+            }
+
+            ?>
 
         </main>
 

@@ -18,16 +18,16 @@
                 </ul>
             </div>
             <div class="col-md-4 w3layouts_footer_grid">
-                <h2>Subscribe <span>Newsletter</span></h2>
+                <!-- <h2>Subscribe <span>Newsletter</span></h2>
                 <p>By subscribing to our mailing list you will always get latest news from us.</p>
                 <form action="#" method="post">
                     <input type="email" name="Email" placeholder="Enter your email..." required="">
                     <button class="btn1"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
                     <div class="clearfix"> </div>
-                </form>
+                </form>-->
             </div>
             <div class="col-md-4 w3layouts_footer_grid">
-                <h3>Latest <span>Events</span></h3>
+                <!-- <h3>Latest <span>Events</span></h3>
                 <ul class="con_inner_text midimg">
                     <li><a href="#"><img src="images/g5.jpg" alt="" class="img-responsive" /></a></li>
                     <li><a href="#"><img src="images/g6.jpg" alt="" class="img-responsive" /></a></li>
@@ -38,12 +38,12 @@
                     <li><a href="#"><img src="images/g12.jpg" alt="" class="img-responsive" /></a></li>
                     <li><a href="#"><img src="images/g11.jpg" alt="" class="img-responsive" /></a></li>
                 </ul>
-
+-->
             </div>
             <div class="clearfix"> </div>
         </div>
     </div>
-    <p class="copyright">© 2018 Football Club. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+    <p class="copyright">© 2020 Football</p>
 </div>
 <!-- //footer -->
 
@@ -55,15 +55,7 @@
 <script src="js/owl.carousel.js"></script>
 <script>
     $(document).ready(function() {
-        $("#owl-demo").owlCarousel({
-
-            autoPlay: 3000, //Set AutoPlay to 3 seconds
-            autoPlay: true,
-            items: 3,
-            itemsDesktop: [991, 2],
-            itemsDesktopSmall: [414, 4]
-
-        });
+        $("#owl-carousel").owlCarousel();
     });
 </script>
 <!-- //owl carousel -->

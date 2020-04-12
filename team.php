@@ -1,3 +1,7 @@
+<?php
+include 'dbconn.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,18 +17,18 @@
 
 			.btn-container {
 				padding: 10px;
+				margin: auto;
 				margin-top: 10px;
-				margin-bottom;
-				10px;
+				margin-bottom: 10px;
 				display: flex;
 				flex-flow: row nowrap;
 				justify-content: center;
-				width: 80%;
-				margin: auto;
+				width: 90%;
+
 			}
 
 			.players-btn {
-				width: 80%;
+				width: 45%;
 				padding: 10px;
 				border: none;
 				background-color: royalblue;
@@ -32,7 +36,7 @@
 
 			}
 
-			.technical-btn {
+			.crew-btn {
 				width: 45%;
 				padding: 10px;
 				border: none;
@@ -56,15 +60,15 @@
 		@media only screen and (min-width: 690px) {
 
 			.btn-container {
+				margin: auto;
 				padding: 10px;
-				margin-top: 10px;
-				margin-bottom;
-				10px;
+				margin-top: 40px;
+				margin-bottom: 10px;
 				display: flex;
 				flex-flow: row nowrap;
 				justify-content: center;
 				width: 40%;
-				margin: auto;
+
 			}
 
 			.players-btn {
@@ -76,7 +80,7 @@
 
 			}
 
-			.technical-btn {
+			.crew-btn {
 				width: 45%;
 				padding: 10px;
 				border: none;
@@ -141,16 +145,16 @@
 							<!-- top-nav -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav cl-effect-16">
-									<li><a href="index.html" data-hover="Home">Home</a></li>
-									<li><a href="about.html" data-hover="About">About</a></li>
-									<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+									<li><a href="index.php" data-hover="Home">Home</a></li>
+									<li><a href="about.php" data-hover="About">About</a></li>
+									<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Team <span class="caret"></span></a>
 										<ul class="dropdown-menu">
-											<li><a href="icons.html" data-hover="Web Icons">Web Icons</a></li>
-											<li><a href="codes.html" data-hover="Short Codes">Short Codes</a></li>
+											<li><a href="team.php?type=players" data-hover="Players">Players</a></li>
+											<li><a href="team.php?type=crew" data-hover="Technical Crew">Technical Crew</a></li>
 										</ul>
 									</li>
-									<li><a href="gallery.html" class="active" data-hover="Gallery">Gallery</a></li>
-									<li><a href="contact.html" data-hover="Contact">Contact</a></li>
+									<li><a href="gallery.php" class="active" data-hover="Gallery">Gallery</a></li>
+									<li><a href="contact.php" data-hover="Contact">Contact</a></li>
 								</ul>
 								<div class="clearfix"> </div>
 							</div>
@@ -173,34 +177,43 @@
 	<div class="btn-container">
 
 		<button type="button" class="players-btn">Players</button>
-		<button type="button" class="technical-btn">Technical crew</button>
+		<button type="button" class="crew-btn">Technical crew</button>
 	</div>
-	<div class="container">
+
+	<!-- players container start  -->
+	<div class="container players-container">
 		<div class="row p-2">
 
 
 
-
 			<?php
-			$x = 0;
-			while ($x < 8) {
+			$sql = "SELECT * FROM players;";
+			$result = mysqli_query($conn, $sql);
+			$numrows = mysqli_num_rows($result);
+			if ($numrows != 0) {
+				while ($row = mysqli_fetch_assoc($result)) {
+					$firstname = $row['firstname'];
+					$lastname = $row['lastname'];
+					$image = $row['image'];
+					$position = $row['position'];
+					$playerid = $row['id'];
 			?>
-				<div class="col-sm-4 col-lg-3 p-2" style="margin-right:;margin-bottom:20px;">
+					<div class="col-sm-4 col-lg-3 p-2" style="margin-right:;margin-bottom:20px;">
 
-					<div class="card w-100">
-						<img class="card-img-top" src="images/t2.jpg" alt="Card image" style="width:100%;height:200px;object-fit:cover;">
-						<div class="card-body"><br>
-							<h4 class="card-title">
-								<h3 style="font-weight:bold;">John Doe
-							</h4>
-							<p class="card-text">Goal Keeper</p>
-							<a href="player-profile.php" class="btn btn-primary">See Profile</a>
+						<div class="card w-100">
+							<img class="card-img-top" src="<?php echo $image; ?>" alt="Card image" style="width:100%;height:200px;object-fit:cover;">
+							<div class="card-body"><br>
+								<h5 class="card-title">
+									<span style="font-weight:bold;"><?php echo $firstname . " " . $lastname; ?></span>
+								</h5>
+								<p class="card-text"><?php echo $position; ?></p>
+								<a href="player-profile.php?playerid=<?php echo $playerid; ?>" class="btn btn-primary">See Profile</a>
+							</div>
 						</div>
-					</div>
 
-				</div>
+					</div>
 			<?php
-				$x++;
+				}
 			}
 			?>
 
@@ -212,5 +225,134 @@
 
 		</div>
 	</div>
+	<!-- players container end -->
+
+
+
+
+
+
+
+
+
+	<!-- technical crew container start  -->
+	<div class="container crew-container">
+		<div class="row p-2">
+
+
+
+
+			<?php
+			$sql = "SELECT * FROM technicalcrew;";
+			$result = mysqli_query($conn, $sql);
+			$numrows = mysqli_num_rows($result);
+			if ($numrows != 0) {
+				while ($row = mysqli_fetch_assoc($result)) {
+					$firstname = $row['firstname'];
+					$lastname = $row['lastname'];
+					$image = $row['image'];
+
+			?>
+					<div class="col-sm-4 col-lg-3 p-2" style="margin-right:;margin-bottom:20px;">
+
+						<div class="card w-100">
+							<img class="card-img-top" src="<?php echo $image; ?>" alt="Card image" style="width:100%;height:200px;object-fit:cover;">
+							<div class="card-body"><br>
+								<div style="width:100%;text-align:center;">
+									<h4 class="card-title">
+										<span style="font-weight:bold;"><?php echo $firstname . " " . $lastname; ?></span>
+									</h4>
+								</div>
+								<!--	<p class="card-text">Goal Keeper</p>
+								<a href="player-profile.php" class="btn btn-primary">See Profile</a>-->
+							</div>
+						</div>
+
+					</div>
+			<?php
+				}
+			}
+			?>
+
+
+
+
+
+
+
+		</div>
+	</div>
+	<!-- technical crew container end -->
+
+
+
+
+
+
+
+
+
+
+
+
+	<script src="js/jquery-2.2.3.min.js"></script>
+	<?php
+	if ($_GET['type'] == "players") {
+		echo '<script>
+			$(".crew-container").hide();
+			$(".players-btn").css({"background-color":"green", "color":"white", "border":"1px solid lightgrey"});
+			$(".crew-btn").css({"background-color":"white", "color":"rgb(70, 70, 70)", "border":"1px solid lightgrey"});
+			
+			</script>';
+	}
+	?>
+
+	<?php
+	if ($_GET['type'] == "crew") {
+		echo '<script>
+		$(".players-container").hide();
+		$(".crew-btn").css({"background-color":"green", "color":"white", "border":"1px solid lightgrey"});
+		$(".players-btn").css({"background-color":"white", "color":"rgb(70, 70, 70)", "border":"1px solid lightgrey"});
+	
+			</script>';
+	}
+	?>
+
+	<script>
+		// player btn
+		$(".players-btn").click(function() {
+			$(".crew-container").fadeOut();
+			$(".players-container").fadeIn();
+			$(".players-btn").css({
+				"background-color": "green",
+				"color": "white",
+				"border": "1px solid lightgrey"
+			});
+			$(".crew-btn").css({
+				"background-color": "white",
+				"color": "rgb(70, 70, 70)",
+				"border": "1px solid lightgrey"
+			});
+
+		});
+
+
+		// crew btn
+		$(".crew-btn").click(function() {
+			$(".players-container").fadeOut();
+			$(".crew-container").fadeIn();
+			$(".crew-btn").css({
+				"background-color": "green",
+				"color": "white",
+				"border": "1px solid lightgrey"
+			});
+			$(".players-btn").css({
+				"background-color": "white",
+				"color": "rgb(70, 70, 70)",
+				"border": "1px solid lightgrey"
+			});
+
+		});
+	</script>
 	<!-- team container end -->
 	<?php include 'footer.php'; ?>

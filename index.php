@@ -1,3 +1,7 @@
+<?php
+include 'dbconn.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +14,24 @@
 			.header-logo {
 				width: 100px;
 				height: 100px;
+			}
+
+
+			.owl-carousel-box {
+				width: 220px;
+				height: auto;
+
+				background-color: ;
+				border: 1px solid lightgrey;
+				padding: 3px;
+
+
+
+			}
+
+			.player-img {
+				width: 100%;
+				height: 200px;
 			}
 		}
 
@@ -27,6 +49,24 @@
 				position: absolute;
 				top: 0px;
 				left: 0px;
+			}
+
+
+			.owl-carousel-box {
+				width: 200px;
+				height: auto;
+
+				background-color: ;
+				border: 1px solid lightgrey;
+				padding: 3px;
+
+
+
+			}
+
+			.player-img {
+				width: 100%;
+				height: 230px;
 			}
 		}
 
@@ -46,10 +86,14 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
+
+
 	<!-- Custom Theme files -->
 	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
 	<link href="css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
+
+
 	<!-- //Custom Theme files -->
 	<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all">
 	<link rel="stylesheet" href="css/owl.theme.css" type="text/css" media="all">
@@ -92,8 +136,8 @@
 									<li><a href="about.html" data-hover="Matches">Matches</a></li>
 									<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Team <span class="caret"></span></a>
 										<ul class="dropdown-menu">
-											<li><a href="team.php?players=true" data-hover="Web Icons">players</a></li>
-											<li><a href="team.php?technicalcrew=true" data-hover="Short Codes">technical crew</a></li>
+											<li><a href="team.php?type=players" data-hover="Players">Players</a></li>
+											<li><a href="team.php?type=crew" data-hover="Technical Crew">Technical Crew</a></li>
 										</ul>
 									</li>
 									<li><a href="gallery.html" data-hover="Gallery">Gallery</a></li>
@@ -155,7 +199,7 @@
 		</div>
 	</div>
 	<!--//about-->
-	<!-- carrer -->
+	<!-- carrer --
 	<div class="carrer">
 		<div class="container">
 			<div class="wthree_head_section">
@@ -212,7 +256,7 @@
 		</div>
 	</div>
 	<!-- //welcome -->
-	<!-- feedback -->
+	<!-- feedback --
 	<div class="feedback section-w3ls about-w3ls">
 		<div class="feedback-agileinfo">
 			<div class="container">
@@ -331,7 +375,7 @@
 	</div>
 	<!-- //feedback -->
 
-	<!-- pricing -->
+	<!-- pricing --
 	<div class="w3ls-section wthree-pricing">
 		<div class="container">
 			<div class="wthree_head_section">
@@ -396,11 +440,69 @@
 					</div>
 				</div>
 				<div class="clearfix"> </div>
-				<!--End-slider-script-->
+				<!--End-slider-script
 			</div>
 		</div>
 	</div>
 	<!--//pricing-->
 
 
+
+	<!-- owl courasel start -->
+	<div class="container">
+		<div id="owl-carousel" style="padding:4px !important;">
+			<?php
+			$sql = "SELECT * FROM players;";
+			$result = mysqli_query($conn, $sql);
+			$numrows = mysqli_num_rows($result);
+			if ($numrows != 0) {
+				while ($row = mysqli_fetch_assoc($result)) {
+					$firstname = $row['firstname'];
+					$lastname = $row['lastname'];
+					$image = $row['image'];
+					$position = $row['position'];
+					$playerid = $row['id'];
+			?>
+					<div class="owl-carousel-box">
+						<div class="card w-100" style="padding:10px;">
+
+							<img class="card-img-top player-img" src="<?php echo $image; ?>" alt="Card image">
+							<div class="card-body">
+								<div style="width:100%;padding:5px;">
+									<h4 class="card-title">
+										<span style="font-weight:;"><?php echo $firstname . " " . $lastname; ?></span>
+									</h4>
+								</div>
+								<p class="card-text"><?php echo $position; ?></p>
+								<a href="player-profile.php?playerid=<?php echo $playerid; ?>" class="btn btn-primary">view profile</a>
+							</div>
+						</div>
+
+					</div>
+
+
+			<?php }
+			} ?>
+
+
+
+
+
+
+
+
+
+			<!--
+			<?php
+			$x = 0;
+			while ($x < 8) {
+			?>
+				<div class="owl-carousel-box"></div>
+			<?php $x++;
+			}
+			?>
+			-->
+		</div>
+	</div>
+	<!-- owl courasel end -->
 	<?php include 'footer.php'; ?>

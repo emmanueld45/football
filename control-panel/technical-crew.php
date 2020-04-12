@@ -1,3 +1,6 @@
+<?php
+include '../dbconn.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,24 +97,36 @@
                 <div class="row">
 
                     <?php
-                    $x = 0;
-                    while ($x < 8) {
+                    $sql = "SELECT * FROM technicalcrew;";
+                    $result = mysqli_query($conn, $sql);
+                    $numrows = mysqli_num_rows($result);
+                    if ($numrows != 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $firstname = $row['firstname'];
+                            $lastname = $row['lastname'];
+                            $image = $row['image'];
+
                     ?>
-                        <div class="col-sm-3 mr-2 mb-2 member-box">
-                            <div class="card w-100">
-                                <a href="edit-crew-member.php" style="color:inherit;"><button class="edit-member-btn">Edit details <i class="fa fa-edit"></i></button></a>
-                                <img class="card-img-top" src="assets/img/g9.jpg" alt="Card image" style="width:100%;height:200px;object-fit:cover;">
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <h3 style="font-weight:bold;">John Doe
-                                    </h4>
-                                    <p class="card-text">Goal Keeper</p>
-                                    <a href="../player-profile.php" class="btn btn-primary">Member Settings</a>
+                            <div class="col-sm-3 mr-2 mb-2 member-box">
+                                <div class="card w-100">
+                                    <a href="edit-crew-member.php" style="color:inherit;"><button class="edit-member-btn">Edit details <i class="fa fa-edit"></i></button></a>
+                                    <img class="card-img-top" src="../<?php echo $image; ?>" alt="Card image" style="width:100%;height:200px;object-fit:cover;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <span style="font-weight:bold;"><?php echo $firstname . " " . $lastname; ?></span>
+                                        </h5>
+                                        <!--<p class="card-text">Goal Keeper</p>-->
+                                        <!--<a href="../player-profile.php" class="btn btn-primary">Member Settings</a>-->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     <?php
-                        $x++;
+                        }
+                    } else {
+
+                        echo "<div class='alert alert-info'>
+                        No technical crew member yet!  click <a href='add-crew-member.php' class='alert-link'></a> to add member
+                        </div>";
                     }
                     ?>
 

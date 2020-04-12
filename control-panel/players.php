@@ -1,3 +1,8 @@
+<?php
+include '../dbconn.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,24 +99,38 @@
                 <div class="row">
 
                     <?php
-                    $x = 0;
-                    while ($x < 8) {
+                    $sql = "SELECT * FROM players;";
+                    $result = mysqli_query($conn, $sql);
+                    $numrows = mysqli_num_rows($result);
+                    if ($numrows != 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $firstname = $row['firstname'];
+                            $lastname = $row['lastname'];
+                            $image = $row['image'];
+                            $position = $row['position'];
+                            $playerid = $row['id'];
                     ?>
-                        <div class="col-sm-3 mr-2 mb-2 player-box">
-                            <div class="card w-100">
-                                <a href="edit-player.php" style="color:inherit;"><button class="edit-player-btn">Edit details <i class="fa fa-edit"></i></button></a>
-                                <img class="card-img-top" src="assets/img/t1.jpg" alt="Card image" style="width:100%;height:200px;object-fit:cover;">
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <h3 style="font-weight:bold;">John Doe
-                                    </h4>
-                                    <p class="card-text">Goal Keeper</p>
-                                    <a href="player-settings.php" class="btn btn-primary">Player Settings</a>
+                            <div class="col-sm-3 mr-2 mb-2 player-box">
+                                <div class="card w-100">
+                                    <a href="edit-player.php" style="color:inherit;"><button class="edit-player-btn">Edit details <i class="fa fa-edit"></i></button></a>
+                                    <img class="card-img-top" src="../<?php echo $image; ?>" alt="Card image" style="width:100%;height:200px;object-fit:cover;">
+                                    <div class="card-body">
+                                        <h6 class="card-title">
+                                            <span style="font-weight:bold;"><?php echo $firstname . " " . $lastname; ?></span>
+                                        </h6>
+                                        <p class="card-text"><?php echo $position; ?></p>
+                                        <a href="player-settings.php?playerid=<?php echo $playerid; ?>" class="btn btn-primary">Player Settings</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     <?php
-                        $x++;
+
+                        }
+                    } else {
+
+                        echo "<div class='alert alert-info'>
+                        No player has been registered yet!  click <a href='player-signup' class='alert-link'></a> to register a player
+                        </div>";
                     }
                     ?>
 

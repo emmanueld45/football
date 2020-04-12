@@ -1,3 +1,7 @@
+<?php
+include '../dbconn.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -134,16 +138,29 @@
 
                 <div class="row gallery">
                     <?php
-                    $x = 0;
-                    while ($x < 8) {
+                    $sql = "SELECT * FROM gallery;";
+                    $result = mysqli_query($conn, $sql);
+                    $numrows = mysqli_num_rows($result);
+                    if ($numrows != 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $caption = $row['caption'];
+                            $image = $row['photo'];
+                            $imageid = $row['id'];
+
                     ?>
-                        <div class="col-sm-3 mr-2 mb-2 gallery-box">
-                            <a href="remove-gallery-photo.php" style="color:inherit;"><button class="remove-photo-btn">remove <i class="fa fa-times"></i></button></a>
-                            <img src="assets/img/1.jpg" class="gallery-img">
-                            <div class="caption"><i>Caption</i></div>
-                        </div>
+                            <div class="col-sm-3 mr-2 mb-2 gallery-box">
+                                <a href="remove-gallery-photo.php" style="color:inherit;"><button class="remove-photo-btn">remove <i class="fa fa-times"></i></button></a>
+                                <img src="../<?php echo $image; ?>" class="gallery-img">
+                                <div class="caption"><i><?php echo $caption; ?></i></div>
+                            </div>
                     <?php
-                        $x++;
+
+                        }
+                    } else {
+
+                        echo "<div class='alert alert-info'>
+                        No Photo in your gallery yet!  click <a href='add-gallery-photo.php' class='alert-link'></a> to add a photo
+                        </div>";
                     }
                     ?>
                 </div>

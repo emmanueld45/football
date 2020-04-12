@@ -49,7 +49,7 @@
 
 
 
-                <form action="add-gallery-photo-check.php" method="POST" enctype="multipart/form-data">
+                <form action="add-news-check.php" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="card mb-4">
@@ -61,14 +61,14 @@
                                         <label class="header">
                                             <h5>Title</h5>
                                         </label>
-                                        <input type="text" id="name" name="name" class="form-control" placeholder="the title goes here...">
+                                        <input type="text" id="name" name="title" class="form-control" placeholder="the title goes here...">
                                     </div><br>
 
                                     <div class="">
                                         <label class="header">
                                             <h5>Content</h5>
                                         </label>
-                                        <textarea type="text" name="name" class="form-control" placeholder="type the content of the news" style="height:400px;">
+                                        <textarea type="text" name="content" class="form-control" placeholder="type the content of the news" style="height:400px;">
 
                                     </textarea>
                                     </div>
@@ -94,7 +94,7 @@
                                         <label class="header">
                                             <h5>Cover Photo</h5>
                                         </label>
-                                        <input type="file" id="name" name="name" class="form-control">
+                                        <input type="file" id="name" name="image" class="form-control">
                                     </div>
 
 
@@ -106,12 +106,21 @@
                     </div>
 
 
-                    <input type="submit" class="btn btn-success" value="Upload News">
+                    <input type="submit" class="btn btn-success" name="submit" value="Upload News">
 
                 </form>
             </div>
 
 
+            <?php
+            if (isset($_GET['newsuploaded'])) {
+                echo "<div class='alert alert-success' style='position:fixed;top:10px;right:10px;z-index:5000;padding:10px;background-color:mediumseagreen;color:white;border-radius:4px;'>
+    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+    News was successfully posted!
+    </div>";
+            }
+
+            ?>
 
 
         </main>

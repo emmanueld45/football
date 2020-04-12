@@ -1,3 +1,6 @@
+<?php
+include '../dbconn.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,24 +97,49 @@
                 <div class="row">
 
                     <?php
-                    $x = 0;
-                    while ($x < 8) {
+                    $sql = "SELECT * FROM news;";
+                    $result = mysqli_query($conn, $sql);
+                    $numrows = mysqli_num_rows($result);
+                    if ($numrows != 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                            $title = $row['title'];
+                            $image = $row['image'];
+                            $content = $row['content'];
+                            $newsid = $row['id'];
+
+                            if (strlen($title) > 20) {
+                                $cuttitle = substr($title, 0, 20);
+
+                                $title = $cuttitle . '...';
+                            }
+
+                            if (strlen($content) > 25) {
+                                $cutcontent = substr($content, 0, 25);
+
+                                $content = $cutcontent . '...';
+                            }
                     ?>
-                        <div class="col-sm-3 mr-2 mb-2 news-box">
-                            <div class="card w-100">
-                                <a href="edit-player.php" style="color:inherit;"><button class="delete-news-btn">Delete <i class="fa fa-edit"></i></button></a>
-                                <img class="card-img-top" src="assets/img/t1.jpg" alt="Card image" style="width:100%;height:200px;object-fit:cover;">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <h3 style="font-weight:bold;">News Headline
-                                    </h5>
-                                    <p class="card-text"></p>This news excerpt
-                                    <a href="player-settings.php" class="btn btn-primary">Read News</a>
+                            <div class="col-sm-3 mr-2 mb-2 news-box">
+                                <div class="card w-100">
+                                    <a href="edit-player.php" style="color:inherit;"><button class="delete-news-btn">Delete <i class="fa fa-edit"></i></button></a>
+                                    <img class="card-img-top" src="../<?php echo $image; ?>" alt="Card image" style="width:100%;height:200px;object-fit:cover;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <span style="font-weight:bold;"><?php echo $title; ?></span>
+                                        </h5>
+                                        <p class="card-text"></p><?php echo $content; ?>
+                                        <a href="../news.php" class="btn btn-primary">Read News</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     <?php
-                        $x++;
+                        }
+                    } else {
+
+                        echo "<div class='alert alert-info'>
+                        No News has been posted yet!  click <a href='add-news.php' class='alert-link'></a> to post a news
+                        </div>";
                     }
                     ?>
 

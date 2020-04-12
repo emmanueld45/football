@@ -59,7 +59,7 @@
 
                                     <div class="">
                                         <label class="header">Caption </label>
-                                        <input type="text" id="name" name="name" class="form-control" placeholder="type here...">
+                                        <input type="text" id="name" name="caption" class="form-control" placeholder="type here...">
                                     </div>
 
 
@@ -81,7 +81,7 @@
 
                                     <div class="">
                                         <label class="header">Select photo </label>
-                                        <input type="file" id="name" name="name" class="form-control">
+                                        <input type="file" id="name" name="image" class="form-control">
                                     </div>
 
 
@@ -93,12 +93,20 @@
                     </div>
 
 
-                    <input type="submit" class="btn btn-success" value="Upload Photo">
+                    <input type="submit" class="btn btn-success" name="submit" value="Upload Photo">
 
                 </form>
             </div>
 
+            <?php
+            if (isset($_GET['photouploaded'])) {
+                echo "<div class='alert alert-success' style='position:fixed;top:10px;right:10px;z-index:5000;padding:10px;background-color:mediumseagreen;color:white;border-radius:4px;'>
+    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+    Photo was successfully uploaded!
+    </div>";
+            }
 
+            ?>
 
 
         </main>
